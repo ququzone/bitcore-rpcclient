@@ -36,10 +36,10 @@ type Balance struct {
 
 // UTXO ...
 type UTXO struct {
-	Address     string  `json:"address"`
-	TxID        string  `json:"txid"`
-	OutputIndex int     `json:"outputIndex"`
-	Scirpt      string  `json:"script"`
-	Satoshis    float64 `json:"satoshis"`
-	Height      int64   `json:"height"`
+	Address     string `json:"address"`
+	TxID        string `json:"txid"`
+	OutputIndex uint32 `json:"outputIndex"`
+	Scirpt      string `json:"script"`
+	Satoshis    int64  `json:"satoshis"`
+	Height      int64  `json:"height"`
 }

@@ -21,6 +21,11 @@ type GetAddressUTXOsCmd struct {
 	Address *AddressesRequest
 }
 
+// GetBlockVerbosityCmd getblock verbosity == 2
+type GetBlockVerbosityCmd struct {
+	Block *BlockVerbosityRequest
+}
+
 // NewGetAddressUTXOsCmd ...
 func NewGetAddressUTXOsCmd(address *AddressesRequest) *GetAddressUTXOsCmd {
 	return &GetAddressUTXOsCmd{
@@ -28,8 +33,19 @@ func NewGetAddressUTXOsCmd(address *AddressesRequest) *GetAddressUTXOsCmd {
 	}
 }
 
+// NewGetBlockVerbosityCmd ...
+func NewGetBlockVerbosityCmd(hash string, verbosity int) *GetBlockVerbosityCmd {
+	return &GetBlockVerbosityCmd{
+		&BlockVerbosityRequest{
+			Hash:      hash,
+			Verbosity: verbosity,
+		},
+	}
+}
+
 func init() {
 	flags := btcjson.UFWalletOnly
 	btcjson.MustRegisterCmd("getaddressbalance", (*GetAddressBalanceCmd)(nil), flags)
 	btcjson.MustRegisterCmd("getaddressutxos", (*GetAddressUTXOsCmd)(nil), flags)
+	btcjson.MustRegisterCmd("getblock", (*GetBlockVerbosityCmd)(nil), flags)
 }

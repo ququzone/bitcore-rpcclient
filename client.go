@@ -70,6 +70,22 @@ func (c *Client) GetAddressUTXOs(address []string) ([]UTXO, error) {
 	return result, nil
 }
 
+// GetBlockVerbosity ...
+func (c *Client) GetBlockVerbosity(hash string) (*BlockVerbosity, error) {
+	cmd := NewGetBlockVerbosityCmd(hash, 2)
+	resBytes, err := c.sendCmd(cmd)
+	if err != nil {
+		return nil, err
+	}
+
+	var result BlockVerbosity
+	err = json.Unmarshal(resBytes, &result)
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 func (c *Client) sendCmd(cmd interface{}) ([]byte, error) {
 	// Get the method associated with the command.
 	method, err := btcjson.CmdMethod(cmd)

@@ -47,5 +47,5 @@ func init() {
 	flags := btcjson.UFWalletOnly
 	btcjson.MustRegisterCmd("getaddressbalance", (*GetAddressBalanceCmd)(nil), flags)
 	btcjson.MustRegisterCmd("getaddressutxos", (*GetAddressUTXOsCmd)(nil), flags)
-	btcjson.MustRegisterCmd("getblock", (*GetBlockVerbosityCmd)(nil), flags)
+	//btcjson.MustRegisterCmd("getblock", (*GetBlockVerbosityCmd)(nil), flags)
 }
